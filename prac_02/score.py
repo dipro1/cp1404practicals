@@ -6,8 +6,8 @@ Program to determine score status
 
 
 
-def score_status(score):                                        #function for
-    if score < 0 or score > 100:
+def score_status(score):                                        #function for determining score status from user input
+    if score < 0 or score > 100:                                #if elif statements for the determination
         return "Invalid score"
     elif score >= 90:
         return "Excellent"
@@ -17,11 +17,11 @@ def score_status(score):                                        #function for
         return "Bad"
 
 
-def main():
+def main():                                                     #main function
 
-    score = float(input("Enter score: "))
-    result = score_status(score)
-    print(result)
+    score = float(input("Enter score: "))                       #user input
+    print(score_status(score))                                  #print the results fron score_status
+
 
 if __name__ == '__main__':
-    main()
+    main()                                                      #call main
