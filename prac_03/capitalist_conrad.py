@@ -16,10 +16,11 @@ MAX_PRICE = 1000.0
 INITIAL_PRICE = 10.0
 
 price = INITIAL_PRICE
-print(f"${price:,.2f}")
+number_of_days = 0                                              #initiual days
+print(f"Starting price: ${price:.2f}")                          #add text to opening amount
 
 while MIN_PRICE <= price <= MAX_PRICE:
-    price_change = 0
+    number_of_days +=1
     # generate a random integer of 1 or 2
     # if it's 1, the price increases, otherwise it decreases
     if random.randint(1, 2) == 1:
@@ -32,4 +33,4 @@ while MIN_PRICE <= price <= MAX_PRICE:
         price_change = random.uniform(-MAX_DECREASE, 0)
 
     price *= (1 + price_change)
-    print(f"${price:,.2f}")
+    print(f"On day {number_of_days} price is: ${price:,.2f}")   #add text to indicate the day corresponding to the sum
