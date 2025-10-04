@@ -14,21 +14,22 @@ MAX_DECREASE = 0.05  # 5%
 MIN_PRICE = 1
 MAX_PRICE = 100.0
 INITIAL_PRICE = 10.0
+FILENAME = "stock_price_simulator"                  #file name
 
-
+out_file = open(FILENAME, 'w')                      #openfile
 
 def main():
     price = INITIAL_PRICE                           #initiual days
     number_of_days = 0
 
-    print(f"Starting price: ${price:.2f}")          #add text to opening amount
+    print(f"Starting price: ${price:.2f}",file=out_file)          #add text to opening amount, printout to file
 
     while MIN_PRICE <= price <= MAX_PRICE:
         number_of_days +=1
         # generate a random integer of 1 or 2
         # if it's 1, the price increases, otherwise it decreases
         price = day(price)
-        print(f"On day {number_of_days} price is: ${price:,.2f}")   #add text to indicate the day corresponding to the sum
+        print(f"On day {number_of_days} price is: ${price:,.2f}",file=out_file)   #add text to indicate the day corresponding to the sum, printout to file
 
 
 def day(price):
@@ -44,3 +45,5 @@ def day(price):
 
 if __name__ == "__main__":
     main()
+
+out_file.close()                                                #close file
