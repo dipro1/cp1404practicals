@@ -6,14 +6,14 @@ Want to read more about it?
 https://docs.python.org/3/library/string.html#formatstrings
 """
 
-name = "Gibson L-5 CES"
-year = 1922
-cost = 16035.9
+NAME = "Gibson L-5 CES"
+YEAR = 1922
+COST = 16035.9
 
 
 #fstring print with conditional
 
-print(f"{year} {name} for about ${cost:,.0f}!")
+print(f"{YEAR} {NAME} for about ${COST:,.0f}!")
 
 
 #for loop in n+1 range
