@@ -38,3 +38,4 @@ with open("numbers.txt","r") as file:               #open file
         total_number += int(line.strip())           #add the numbers one by one
 
 print(total_number)                                 #print total
+
