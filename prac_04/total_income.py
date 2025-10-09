@@ -8,11 +8,22 @@ Starter code for cumulative total income program
 def main():
     """Display income report for incomes over a given number of months."""
     incomes = []
-    number_of_months = int(input("How many months? "))
+    try:
+        number_of_months = int(input("How many months? "))
+        if number_of_months < 1:
+            print("Minimum number of months is 1")
+            return
+    except ValueError:
+        print("Invalid input")
+        return
 
     for month in range(1, number_of_months + 1):
-        income = float(input(f"Enter income for month {month}: "))          #change to fstring
-        incomes.append(income)
+        try:
+            income = float(input(f"Enter income for month {month}: "))          #change to fstring
+            incomes.append(income)
+        except ValueError:
+            print("invalid input")
+            return
 
     print_report(incomes, number_of_months)
 
