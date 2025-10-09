@@ -7,21 +7,25 @@ FILENAME = "subject_data.txt"
 
 
 def main():
-    data = load_data(FILENAME)
-    print(data)
+    subject_details = load_data(FILENAME)
+    display_subject(subject_details)
 
 
 def load_data(filename=FILENAME):
     """Read data from file formatted like: subject,lecturer,number of students."""
-    result = []
+    sublect_list = []
     with open(filename) as input_file:
         for line in input_file:
             line = line.strip()  # Remove the \n
             parts = line.split(',')  # Separate the data into its parts
-
             parts[2] = int(parts[2])  # Make the number an integer (ignore PyCharm's warning)
-            result.append(parts)  # See if that worked
-    return result
+            sublect_list.append(parts)  # See if that worked
+    return sublect_list
+
+
+def display_subject(subject_details):
+    for subject, lecturer, number_of_students in subject_details:
+        print(f"{subject} is taught by {lecturer} and has {number_of_students} students")
 
 
 main()
