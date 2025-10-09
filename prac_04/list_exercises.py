@@ -6,10 +6,11 @@ def main():
 
     user_name = input("please enter your username: ")
 
-    if user_name in usernames:
-        print("Access granted")
-    else:
+    if user_name not in usernames:
         print("Access denied")
+        return
+    else:
+        print("Access granted\n")
 
     for i in range(5):
         numbers = int(input("number: "))
