@@ -19,11 +19,13 @@ numbers = [3, 1, 4, 1, 5, 9, 2]
 # numbers + [6, 5, 3]
 # [3, 1, 4, 1, 5, 9, 2, 6, 5, 3]
 
-
+# 1
 numbers[0] = "ten"  # replace first value to "ten"
-
+print(numbers)
+# 2
 numbers[-1] = 1  # replace the last value to 1
-
+print(numbers)
+# 3
 print(numbers[2:])  # print the list except the first 2 number
-
+# 4
 print(9 in numbers)  # check if 9 is in the list
