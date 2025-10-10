@@ -29,7 +29,6 @@ print(a_names)
 # 'Ada Alan Angel Bob Jimi'
 print(" ".join(sorted(names)))
 
-
 lowercase_full_names = [name.lower() for name in full_names]
 print(lowercase_full_names)
 
@@ -37,7 +36,6 @@ almost_numbers = ['0', '10', '21', '3', '-7', '88', '9']
 
 numbers = [int(numbers) for numbers in almost_numbers]
 print(numbers)
-
 
 # greater than 9 from the numbers (not strings) you just created
 numbers_greater_tan_9 = [number for number in numbers if number > 9]
