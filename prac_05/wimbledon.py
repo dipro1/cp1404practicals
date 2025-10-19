@@ -2,27 +2,32 @@
 CP1404Practical
 Wimbledon champions
 Estimate: 10 minutes
-Actual:  minutes
+Actual: 45 minutes
 """
 
 FILENAME = "wimbledon.csv"
-INDEX_CHAMPION = 1
-INDEX_COUNTRY= 2
+INDEX_CHAMPION = 2
+INDEX_COUNTRY= 1
 def main():
     records = load_data(FILENAME)
+    champion_count, countries = process_records(records)
+    displays_result(champion_count,countries)
 
 
 
 def load_data(filename):
+    """Record the data into a list"""
+    records = []
     with open(filename, "r", encoding="utf-8-sig") as in_file:
         in_file.readline()
         for line in in_file:
             data = line.strip().split(",")
-    return data
+            records.append(data)
+    return records
 
 
 def process_records(data):
-    """Create dictionary of champions and set of countries from records (list of lists)."""
+    """Create dictionary """
     champion_count = {}
     countries = set()
     for record in data:
@@ -33,9 +38,14 @@ def process_records(data):
             champion_count[record[INDEX_CHAMPION]] = 1
     return champion_count, countries
 
-# def displays_result():
-#     print("Wimbledon champions: ")
-#     for
+def displays_result(champion_count, countries):
+    """Display the champion - number of wins and countries that won """
+    print("Wimbledon champions: ")
+    for name, count in champion_count.items():
+        print(f"{name:20} {count}")
+    print(f"\nThese {len(countries)} countries have won wimbledon: ")
+    print(",".join(sorted(countries)))
+
 
 
 if __name__ == "__main__":
