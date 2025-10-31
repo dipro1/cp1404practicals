@@ -1,4 +1,4 @@
-COLOUR_CODES = {
+COLOUR_NAME_TO_CODE = {
     "Absolute Zero": "#0048ba",
     "Acid Green": "#b0bf1a",
     "AliceBlue": "#f0f8ff",
@@ -11,13 +11,13 @@ COLOUR_CODES = {
     "AntiqueWhite2": "#eedfcc"
 }
 
-for colour, code in COLOUR_CODES.items():
-    print(f"{colour} ")
+for name in COLOUR_NAME_TO_CODE:
+    print(f"{name.title()} ")
 
-colour_name = input("Enter a colour name: ").upper()
+colour_name = input("Enter a colour name: ").strip()
 while colour_name != "":
-    if colour_name in COLOUR_CODES:
-        print(f"{colour_name} is {COLOUR_CODES[colour_name]}")
+    if colour_name in COLOUR_NAME_TO_CODE:
+        print(f"{colour_name} is {COLOUR_NAME_TO_CODE[colour_name]}")
     else:
         print("Invalid name")
-    colour_name = input("Enter a colour name: ").upper()
+    colour_name = input("Enter a colour name: ").strip()
