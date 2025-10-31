@@ -2,6 +2,7 @@ from prac_06.programming_language import ProgrammingLanguage
 
 
 def main():
+    """check for dynamic programing language"""
     python = ProgrammingLanguage("Python", "Dynamic", True, 1991)
     ruby = ProgrammingLanguage("Ruby", "Dynamic", True, 1995)
     visual_basic = ProgrammingLanguage("Visual Basic", "Static", False, 1991)
@@ -11,7 +12,7 @@ def main():
 
     print("The dynamically typed languages are:")
     for language in languages:
-        if language.is_dynamic():
+        if language.is_dynamic():     #use __str__(self)
             print(language.name)
 
 if __name__ == "__main__":
