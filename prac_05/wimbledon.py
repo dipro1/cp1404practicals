@@ -9,6 +9,7 @@ FILENAME = "wimbledon.csv"
 INDEX_CHAMPION = 2
 INDEX_COUNTRY= 1
 def main():
+    """Main function to call the others"""
     records = load_data(FILENAME)
     champion_count, countries = process_records(records)
     displays_result(champion_count,countries)
@@ -28,15 +29,15 @@ def load_data(filename):
 
 def process_records(data):
     """Create dictionary """
-    champion_count = {}
+    champion_win_counts = {}
     countries = set()
     for record in data:
         countries.add(record[INDEX_COUNTRY])
         try:
-            champion_count[record[INDEX_CHAMPION]] += 1
+            champion_win_counts[record[INDEX_CHAMPION]] += 1
         except KeyError:
-            champion_count[record[INDEX_CHAMPION]] = 1
-    return champion_count, countries
+            champion_win_counts[record[INDEX_CHAMPION]] = 1
+    return champion_win_counts, countries
 
 def displays_result(champion_count, countries):
     """Display the champion - number of wins and countries that won """
@@ -44,7 +45,7 @@ def displays_result(champion_count, countries):
     for name, count in champion_count.items():
         print(f"{name:20} {count}")
     print(f"\nThese {len(countries)} countries have won wimbledon: ")
-    print(",".join(sorted(countries)))
+    print(", ".join(sorted(countries)))
 
 
 
