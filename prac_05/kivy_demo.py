@@ -2,6 +2,11 @@ from kivy.app import App
 from kivy.lang import Builder
 from kivy.properties import StringProperty
 from kivy.uix.button import Button
+from kivy.uix.image import Image
+from kivy.uix.behaviors import ButtonBehavior
+
+class ImageButton(ButtonBehavior, Image):
+    pass
 
 
 class KivyDemo(App):
