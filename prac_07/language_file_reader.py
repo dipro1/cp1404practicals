@@ -9,9 +9,26 @@ from collections import namedtuple
 
 from programming_language import ProgrammingLanguage
 
+def add_language():
+    new_language = ["C#", "Static", "Yes", "2000"]
+    try:
+        with open("languages.csv", "r", newline="") as language:
+            reader = csv.reader(language)
+            existing_names = {row[0] for row in reader if row}
+        if new_language[0] not in existing_names:
+            with open("languages.csv", "a", newline="") as language:
+                writer = csv.writer(language)
+                writer.writerow(new_language)
+    except FileNotFoundError:
+        with open("languages.csv", "w", newline="") as language:
+            writer = csv.writer(language)
+            writer.writerow(["Language", "Typing", "Reflection", "Year"])
+            writer.writerow(new_language)
+
 
 def main():
     """Read file of programming language details, save as objects, display."""
+    add_language()
     languages = []
     # Open the file for reading
     in_file = open('languages.csv', 'r')
@@ -40,6 +57,8 @@ def main():
 
 
 main()
+
+
 
 
 def using_csv():
@@ -84,5 +103,5 @@ def using_csv_namedtuple():
     for language in map(Language._make, csv.reader(in_file)):
         print(language.name, 'was released in', language.year)
         print(repr(language))
-
+    in_file.close()
 # using_csv_namedtuple()
