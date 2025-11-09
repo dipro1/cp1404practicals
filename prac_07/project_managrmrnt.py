@@ -1,5 +1,8 @@
 
 from datetime import datetime
+
+from Scripts.pywin32_testall import project_root
+
 from project import Project
 
 DEFAULT_FILENAME = "projects.txt"
@@ -41,6 +44,22 @@ def menu() -> str:
     return input(">>> ").strip().upper()
 
 
+
+def display_projects(projects: list[Project]) -> None:
+    """Display incomplete and completed projects, each sorted by priority."""
+    incomplete = [project for project in projects if not project.check_if_complete()]
+    completed = [project for project in projects if project.check_if_complete()]
+    incomplete.sort()
+    completed.sort()
+    print("Incomplete projects:")
+    for project in incomplete:
+        print(f"  {project}")
+    print("Completed projects:")
+    for project in completed:
+        print(f"  {project}")
+
+
+
 def main():
     print("Welcome to Pythonic Project Management")
     projects = load_projects(DEFAULT_FILENAME)
@@ -53,7 +72,7 @@ def main():
         elif choice == "S":
             print("")
         elif choice == "D":
-            print("")
+            display_projects(projects)
         elif choice == "F":
             print("")
         elif choice == "A":
