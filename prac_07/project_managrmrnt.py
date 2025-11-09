@@ -1,9 +1,10 @@
 
 from datetime import datetime
 
-from Scripts.pywin32_testall import project_root
 
 from project import Project
+from operator import itemgetter
+
 
 DEFAULT_FILENAME = "projects.txt"
 
@@ -45,7 +46,7 @@ def menu() -> str:
 
 
 
-def display_projects(projects: list[Project]) -> None:
+def display_projects(projects):
     """Display incomplete and completed projects, each sorted by priority."""
     incomplete = [project for project in projects if not project.check_if_complete()]
     completed = [project for project in projects if project.check_if_complete()]
@@ -58,7 +59,14 @@ def display_projects(projects: list[Project]) -> None:
     for project in completed:
         print(f"  {project}")
 
-
+def filter_projects_by_date(projects):
+    date_string = input("Show projects that start after date (dd/mm/yyyy): ")
+    target = parse_date(date_string)
+    matches = [project for project in projects if project.check_cutoff(target)]
+    sortable = [(project.start_date, project.priority, project.name, project) for project in matches]
+    sortable.sort(key=itemgetter(0, 1, 2))
+    for project in matches:
+        print(project)
 
 def main():
     print("Welcome to Pythonic Project Management")
@@ -74,7 +82,7 @@ def main():
         elif choice == "D":
             display_projects(projects)
         elif choice == "F":
-            print("")
+            filter_projects_by_date(projects)
         elif choice == "A":
             print("")
         elif choice == "U":
