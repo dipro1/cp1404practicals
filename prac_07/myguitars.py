@@ -1,4 +1,5 @@
 import csv
+
 from guitar import Guitar
 
 FILENAME = "guitars.csv"
@@ -16,6 +17,7 @@ def load_guitars(filename=FILENAME):
             guitars.append(Guitar(name, year, cost))
     return guitars
 
+
 def add_new_guitar(guitars):
     name = input("Name: ")
     while name != "":
@@ -26,6 +28,7 @@ def add_new_guitar(guitars):
         print(guitar_to_add, "added.")
         name = input("Name: ")
 
+
 def display_guitars(guitars):
     for guitar in guitars:
         vintage = " (vintage)" if guitar.is_vintage() else ""
@@ -33,11 +36,20 @@ def display_guitars(guitars):
     print()
 
 
+def save_new_guitar(guitars, filename=FILENAME):
+    with open(filename, "w", newline="") as file:
+        writer = csv.writer(file)
+        for guitar in guitars:
+            writer.writerow([guitar.name, guitar.year, f"{guitar.cost}"])
+
+
 def main():
     guitars = load_guitars()
     add_new_guitar(guitars)
     guitars.sort()
     display_guitars(guitars)
+    save_new_guitar(guitars)
+
 
 if __name__ == "__main__":
     main()
