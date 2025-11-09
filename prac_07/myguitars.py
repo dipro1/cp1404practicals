@@ -16,6 +16,15 @@ def load_guitars(filename=FILENAME):
             guitars.append(Guitar(name, year, cost))
     return guitars
 
+def add_new_guitar(guitars):
+    name = input("Name: ")
+    while name != "":
+        year = int(input("Year: "))
+        cost = float(input("Cost: $"))
+        guitar_to_add = Guitar(name, year, cost)
+        guitars.append(guitar_to_add)
+        print(guitar_to_add, "added.")
+        name = input("Name: ")
 
 def display_guitars(guitars):
     for guitar in guitars:
@@ -26,6 +35,7 @@ def display_guitars(guitars):
 
 def main():
     guitars = load_guitars()
+    add_new_guitar(guitars)
     guitars.sort()
     display_guitars(guitars)
 
