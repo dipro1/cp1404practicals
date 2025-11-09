@@ -26,6 +26,7 @@ def display_guitars(guitars):
 
 def main():
     guitars = load_guitars()
+    guitars.sort()
     display_guitars(guitars)
 
 if __name__ == "__main__":
