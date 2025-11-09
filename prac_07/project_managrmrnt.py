@@ -68,6 +68,23 @@ def filter_projects_by_date(projects):
     for project in matches:
         print(project)
 
+def add_new_project(projects):
+    print("Let's add a new project")
+    name = input("Name: ").strip()
+    start_date = input("Start date (dd/mm/yyyy): ").strip()
+    priority = int(input("Priority: "))
+    cost_estimate = float(input("Cost estimate: $"))
+    percent_complete = int(input("Percent complete: "))
+    projects.append(
+        Project(
+            name=name,
+            start_date=parse_date(start_date),
+            priority=priority,
+            cost_estimate=cost_estimate,
+            percent_complete=percent_complete,
+        )
+    )
+
 def main():
     print("Welcome to Pythonic Project Management")
     projects = load_projects(DEFAULT_FILENAME)
@@ -84,7 +101,7 @@ def main():
         elif choice == "F":
             filter_projects_by_date(projects)
         elif choice == "A":
-            print("")
+            add_new_project(projects)
         elif choice == "U":
             print("")
         else:
