@@ -85,6 +85,26 @@ def add_new_project(projects):
         )
     )
 
+def update_project(projects):
+    for i, p in enumerate(projects):
+        print(f"{i} {p}")
+    choice = input("Project choice: ").strip()
+    if choice == "":
+        return
+    index = int(choice)
+    project = projects[index]
+    print(project)
+
+    new_percent = input("New Percentage: ").strip()
+    if new_percent != "":
+        project.percent_complete = int(new_percent)
+
+    new_priority = input("New Priority: ").strip()
+    if new_priority != "":
+        project.priority = int(new_priority)
+
+
+
 def main():
     print("Welcome to Pythonic Project Management")
     projects = load_projects(DEFAULT_FILENAME)
@@ -103,7 +123,7 @@ def main():
         elif choice == "A":
             add_new_project(projects)
         elif choice == "U":
-            print("")
+            update_project(projects)
         else:
             print("Invalid choice")
         choice = menu()
