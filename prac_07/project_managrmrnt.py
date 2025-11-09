@@ -103,6 +103,15 @@ def update_project(projects):
     if new_priority != "":
         project.priority = int(new_priority)
 
+def save_projects(filename: str, projects):
+    with open(filename, "w") as file:
+        file.write("Name\tStart Date\tPriority\tCost Estimate\tCompletion Percentage\n")
+        for project in projects:
+            file.write(
+                f"{project.name}\t{project.start_date.strftime('%d/%m/%Y')}\t"
+                f"{project.priority}\t{project.cost_estimate}\t{project.percent_complete}\n"
+            )
+
 
 
 def main():
@@ -113,9 +122,13 @@ def main():
     choice = menu()
     while choice != "Q":
         if choice == "L":
-            print("")
+            filename = input("Filename to load from: ").strip()
+            projects = load_projects(filename)
+            print(f"Loaded {len(projects)} projects from {filename}")
         elif choice == "S":
-            print("")
+            filename = input("Filename to save to: ").strip()
+            save_projects(filename, projects)
+            print(f"Saved {len(projects)} projects to {filename}")
         elif choice == "D":
             display_projects(projects)
         elif choice == "F":
@@ -127,6 +140,12 @@ def main():
         else:
             print("Invalid choice")
         choice = menu()
+
+    save_answer = input(f"Would you like to save to {DEFAULT_FILENAME}? ").strip()
+    if save_answer and save_answer[0].lower() == "y":
+        save_projects(DEFAULT_FILENAME, projects)
+        print(f"Saved {len(projects)} projects to {DEFAULT_FILENAME}")
+
 
     print("Thank you for using custom-built project management software.")
 
