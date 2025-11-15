@@ -20,7 +20,10 @@ class ConvertMilesKmApp(App):
         return self.root
 
     def miles(self):
-        return float(self.root.ids.miles_input.text)
+        try:
+            return float(self.root.ids.miles_input.text)
+        except ValueError:
+            return 0.0
 
 
     def results(self):
