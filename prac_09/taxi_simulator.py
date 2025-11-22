@@ -27,6 +27,17 @@ def choose_taxi(taxis):
     print("Taxis available:")
     available_taxis(taxis)
 
+    try:
+        taxi_choice = int(input("Choose taxi: "))
+        if 0 <= taxi_choice < len(taxis):
+            current_taxi = taxis[taxi_choice]
+        else:
+            print("Invalid taxi choice")
+    except ValueError:
+        print("Invalid taxi choice")
+
+
+
 def drive_taxi():
     pass
 
