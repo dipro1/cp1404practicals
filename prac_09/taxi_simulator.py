@@ -1,21 +1,28 @@
+
+
 from taxi import Taxi
 from silver_service_taxi import SilverServiceTaxi
 
 MENU = "q)uit, c)hoose taxi, d)rive"
+
+
 
 def main():
     print("Let's drive!")
 
     taxis = [Taxi("Prius", 100), SilverServiceTaxi("Limo", 100, 2), SilverServiceTaxi("Hummer", 200, 4)]
     current_taxi = None
-
+    bill_to_date = 0.0
     print(MENU)
     choice = input(">>> ").lower()
     while choice != "q":
         if choice == "c":
-            choose_taxi(taxis)
+            current_taxi = choose_taxi(taxis, current_taxi)
         elif choice == "d":
-            drive_taxi()
+            if current_taxi is None:
+                print("You need to choose a taxi before you can drive")
+            else:
+                bill_to_date = drive_taxi(current_taxi, bill_to_date)
         else:
             print("invalid input")
 
@@ -23,7 +30,7 @@ def main():
         choice = input(">>> ").lower()
 
 
-def choose_taxi(taxis):
+def choose_taxi(taxis,current_taxi):
     print("Taxis available:")
     available_taxis(taxis)
 
@@ -35,11 +42,16 @@ def choose_taxi(taxis):
             print("Invalid taxi choice")
     except ValueError:
         print("Invalid taxi choice")
+    return current_taxi
 
 
 
-def drive_taxi():
-    pass
+def drive_taxi(current_taxi, bill_to_date):
+    try:
+        distance_to_drive = float(input("Drive how far? "))
+    except ValueError:
+        print("Invalid distance")
+        return bill_to_date
 
 def available_taxis(taxis):
     for i, taxi in enumerate(taxis):
