@@ -1,21 +1,22 @@
-
-
+""" Taxi simulation """
+# imports
 from taxi import Taxi
 from silver_service_taxi import SilverServiceTaxi
 
-MENU = "q)uit, c)hoose taxi, d)rive"
+MENU = "q)uit, c)hoose taxi, d)rive"    #menu
 
 
 
 def main():
-    print("Let's drive!")
+    print("Let's drive!")   # welcome statement
 
     taxis = [Taxi("Prius", 100), SilverServiceTaxi("Limo", 100, 2), SilverServiceTaxi("Hummer", 200, 4)]
+    # taxi list
     current_taxi = None
     bill_to_date = 0.0
     print(MENU)
     choice = input(">>> ").lower()
-    while choice != "q":
+    while choice != "q":    #menu options
         if choice == "c":
             current_taxi = choose_taxi(taxis, current_taxi)
         elif choice == "d":
@@ -24,17 +25,18 @@ def main():
             else:
                 bill_to_date = drive_taxi(current_taxi, bill_to_date)
         else:
-            print("invalid input")
+            print("invalid option")
 
         print(f"Bill to date: ${bill_to_date:.2f}")
         print(MENU)
         choice = input(">>> ").lower()
 
-
+    print(f"Bill to date: ${bill_to_date:.2f}")
     print("Taxis are now:")
     available_taxis(taxis)
 
 def choose_taxi(taxis,current_taxi):
+    """User choice of taxi"""
     print("Taxis available:")
     available_taxis(taxis)
 
@@ -51,6 +53,7 @@ def choose_taxi(taxis,current_taxi):
 
 
 def drive_taxi(current_taxi, bill_to_date):
+    """Drive user selected taxi"""
     try:
         distance_to_drive = float(input("Drive how far? "))
     except ValueError:
@@ -66,6 +69,7 @@ def drive_taxi(current_taxi, bill_to_date):
 
 
 def available_taxis(taxis):
+    """Indexed taxis"""
     for i, taxi in enumerate(taxis):
         print(f"{i} - {taxi}")
 
