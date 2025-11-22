@@ -25,11 +25,14 @@ def main():
 
 def choose_taxi(taxis):
     print("Taxis available:")
-    print(f"{taxis}")
+    available_taxis(taxis)
 
 def drive_taxi():
     pass
 
+def available_taxis(taxis):
+    for i, taxi in enumerate(taxis):
+        print(f"{i} - {taxi}")
 
 if __name__ == "__main__":
     main()
