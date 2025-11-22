@@ -5,7 +5,9 @@ def main():
 
 
     my_taxi.drive(40)
-    print(f"{my_taxi.get_fare()}") #test
+
+    print(my_taxi)
+    print(f"Current fare is ${my_taxi.get_fare()}")
 
 
 if __name__ == "__main__":
