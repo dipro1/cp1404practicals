@@ -13,14 +13,22 @@ def main():
     choice = input(">>> ").lower()
     while choice != "q":
         if choice == "c":
-            pass
+            choose_taxi()
         elif choice == "d":
-            pass
+            drive_taxi()
         else:
             print("invalid input")
 
         print(MENU)
         choice = input(">>> ").lower()
+
+
+def choose_taxi():
+    pass
+
+def drive_taxi():
+    pass
+
 
 if __name__ == "__main__":
     main()
