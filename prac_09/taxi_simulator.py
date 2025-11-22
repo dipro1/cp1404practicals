@@ -13,7 +13,7 @@ def main():
     choice = input(">>> ").lower()
     while choice != "q":
         if choice == "c":
-            choose_taxi()
+            choose_taxi(taxis)
         elif choice == "d":
             drive_taxi()
         else:
@@ -23,8 +23,9 @@ def main():
         choice = input(">>> ").lower()
 
 
-def choose_taxi():
-    pass
+def choose_taxi(taxis):
+    print("Taxis available:")
+    print(f"{taxis}")
 
 def drive_taxi():
     pass
