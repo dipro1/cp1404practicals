@@ -26,9 +26,13 @@ def main():
         else:
             print("invalid input")
 
+        print(f"Bill to date: ${bill_to_date:.2f}")
         print(MENU)
         choice = input(">>> ").lower()
 
+
+    print("Taxis are now:")
+    available_taxis(taxis)
 
 def choose_taxi(taxis,current_taxi):
     print("Taxis available:")
