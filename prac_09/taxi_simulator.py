@@ -53,6 +53,14 @@ def drive_taxi(current_taxi, bill_to_date):
         print("Invalid distance")
         return bill_to_date
 
+    current_taxi.start_fare()
+    current_taxi.drive(distance_to_drive)
+    cost_of_trip = current_taxi.get_fare()
+    print(f"Your {current_taxi.name} trip cost you ${cost_of_trip:.2f}")
+    bill_to_date += cost_of_trip
+    return bill_to_date
+
+
 def available_taxis(taxis):
     for i, taxi in enumerate(taxis):
         print(f"{i} - {taxi}")
